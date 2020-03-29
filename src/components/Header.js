@@ -4,8 +4,8 @@ import "../styles/Header.css";
 function Header () {
     return (
       <div className="header">
-        <h1>Employee Directory</h1>
-        <p>Click on carrots to filter by heading or use the search box to narrow your results.</p>
+        <h1>bookMark</h1>
+        <h2>Employee Directory</h2>
       </div>
     )
   }
