@@ -69,3 +69,9 @@ const DataArea = () => {
             elem.order = elem.name === heading ? currentOrder : elem.order;
             return elem;
         });
+        setDeveloperState({
+            ...developerState,
+            filteredUsers: sortedUsers,
+            headings: updatedHeadings
+          });
+        };
