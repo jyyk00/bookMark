@@ -18,3 +18,6 @@ const DataArea = () => {
       { name: "dob", width: "10%", order: "descend" }
     ]
   });
+
+  const handleSort = heading => {
+    let currentOrder = developerState.headings
