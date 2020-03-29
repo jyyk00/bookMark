@@ -21,3 +21,12 @@ const DataArea = () => {
 
   const handleSort = heading => {
     let currentOrder = developerState.headings
+    .filter(elem => elem.name === heading)
+      .map(elem => elem.order)
+      .toString();
+
+    if (currentOrder === "descend") {
+      currentOrder = "ascend";
+    } else {
+      currentOrder = "descend";
+    }
