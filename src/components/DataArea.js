@@ -33,13 +33,13 @@ const DataArea = () => {
 
         const compareFnc = (a, b) => {
             if (currentOrder === "ascend") {
-                // account for missing values
+
                 if (a[heading] === undefined) {
                     return 1;
                 } else if (b[heading] === undefined) {
                     return -1;
                 }
-                // numerically
+
                 else if (heading === "name") {
                     return a[heading].first.localeCompare(b[heading].first);
                 } else if (heading === "dob") {
@@ -48,13 +48,13 @@ const DataArea = () => {
                     return a[heading].localeCompare(b[heading]);
                 }
             } else {
-                // account for missing values
+
                 if (a[heading] === undefined) {
                     return 1;
                 } else if (b[heading] === undefined) {
                     return -1;
                 }
-                // numerically
+
                 else if (heading === "name") {
                     return b[heading].first.localeCompare(a[heading].first);
                 } else if (heading === "dob") {
@@ -69,23 +69,34 @@ const DataArea = () => {
             elem.order = elem.name === heading ? currentOrder : elem.order;
             return elem;
         });
-        
+
         setDeveloperState({
             ...developerState,
             filteredUsers: sortedUsers,
             headings: updatedHeadings
-          });
-        };
+        });
+    };
 
-        const handleSearchChange = event => {
-            const filter = event.target.value;
-            const filteredList = developerState.users.filter(item => {
-              let values = item.name.first.toLowerCase() + " " + item.name.last.toLowerCase();
-              console.log(filter, values)
-            if(values.indexOf(filter.toLowerCase()) !== -1){
-              return item
+    const handleSearchChange = event => {
+        const filter = event.target.value;
+        const filteredList = developerState.users.filter(item => {
+            let values = item.name.first.toLowerCase() + " " + item.name.last.toLowerCase();
+            console.log(filter, values)
+            if (values.indexOf(filter.toLowerCase()) !== -1) {
+                return item
             };
+        });
+
+        setDeveloperState({ ...developerState, filteredUsers: filteredList });
+    };
+    ///https://stackoverflow.com/questions/53120972/how-to-call-loading-function-with-react-useeffect-only-once
+    useEffect(() => {
+        API.getUsers().then(results => {
+            console.log(results.data.results);
+            setDeveloperState({
+                ...developerState,
+                users: results.data.results,
+                filteredUsers: results.data.results
             });
-        
-            setDeveloperState({ ...developerState, filteredUsers: filteredList });
-          };
+        });
+    }, []);
