@@ -100,3 +100,17 @@ const DataArea = () => {
             });
         });
     }, []);
+
+    return (
+        <DataAreaContext.Provider
+            value={{ developerState, handleSearchChange, handleSort }}
+        >
+            <Nav />
+            <div className="data-area">
+                {developerState.filteredUsers.length > 0 ? <DataTable /> : <div></div>}
+            </div>
+        </DataAreaContext.Provider>
+    );
+};
+
+export default DataArea;
