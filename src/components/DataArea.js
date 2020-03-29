@@ -30,3 +30,12 @@ const DataArea = () => {
     } else {
       currentOrder = "descend";
     }
+
+    const compareFnc = (a, b) => {
+        if (currentOrder === "ascend") {
+          // account for missing values
+          if (a[heading] === undefined) {
+            return 1;
+          } else if (b[heading] === undefined) {
+            return -1;
+          }
