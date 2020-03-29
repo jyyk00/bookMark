@@ -4,3 +4,6 @@ import Nav from "./Nav";
 import API from "../utils/API";
 import "../styles/DataArea.css";
 import DataAreaContext from "../utils/DataAreaContext";
+
+const DataArea = () => {
+    const [developerState, setDeveloperState] = useState({
