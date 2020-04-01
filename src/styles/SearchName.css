@@ -1,9 +1,11 @@
 .searchbox button {
     border: 1px solid green;
+    float: left;
 } 
 
  .searchbox button:hover {
     background-color: green;
     color: #ffffff;
+    float: left;
 
 }

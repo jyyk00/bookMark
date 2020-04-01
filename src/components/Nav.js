@@ -19,9 +19,7 @@ function Nav() {
           <span className="navbar-toggler-icon" />
         </button>
         <div className="collapse navbar-collapse row" id="navbarNav">
-          {/* <div className="input-group col-8">
-            <SearchDOB />
-          </div> */}
+
           <div className="search-area col-4">
             <SearchName />
           </div>
